@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Audit Keuangan - Dashboard Analitik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --primary-blue: #1e40af;
+            --primary-light: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --gradient-warning: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --gradient-danger: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--neutral-700);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            background: var(--neutral-50);
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        header .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+
+        /* Container Styles - FIXED FOR STACKING */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Card Styles - SINGLE COLUMN STACKING */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--neutral-200);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--neutral-100);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-icon.cash { background: var(--gradient-success); }
+        .card-icon.receivables { background: var(--gradient-primary); }
+        .card-icon.inventory { background: var(--gradient-warning); }
+        .card-icon.assets { background: var(--gradient-danger); }
+        .card-icon.payables { background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%); }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+        }
+
+        .card-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .badge i {
+            margin-right: 0.25rem;
+        }
+
+        .badge.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Finding Styles */
+        .finding {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .finding.critical {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left-color: var(--accent-red);
+        }
+
+        .finding.minor {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left-color: var(--primary-light);
+        }
+
+        .finding-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.8);
+            color: var(--accent-orange);
+        }
+
+        .finding.critical .finding-icon {
+            color: var(--accent-red);
+        }
+
+        .finding.minor .finding-icon {
+            color: var(--primary-light);
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            background: var(--neutral-50);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid var(--neutral-200);
+        }
+
+        .chart-title {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--neutral-800);
+            font-size: 1rem;
+        }
+
+        /* Improved Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .bar-label {
+            font-weight: 600;
+            color: var(--neutral-800);
+            font-size: 0.95rem;
+        }
+
+        .bar-value {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        .bar-wrapper {
+            width: 100%;
+            background: var(--neutral-200);
+            border-radius: 6px;
+            height: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease-out;
+            position: relative;
+        }
+
+        .bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+        }
+
+        .bar.primary {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+        }
+
+        .bar.success {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        }
+
+        .bar.warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        .bar.danger {
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+        }
+
+        .bar.positive {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #34d399 100%);
+        }
+
+        .bar.negative {
+            background: linear-gradient(135deg, var(--accent-red) 0%, #f87171 100%);
+        }
+
+        /* Stack Layout for Charts */
+        .stacked-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .stacked-chart .bar-item {
+            margin-bottom: 0;
+        }
+
+        /* Data Point Styles */
+        .data-point {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.125rem;
+        }
+
+        .explanation {
+            font-style: italic;
+            color: var(--neutral-700);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--neutral-300);
+        }
+
+        /* Enhanced List Styles */
+        .enhanced-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .enhanced-list li {
+            background: white;
+            border: 1px solid var(--neutral-200);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .enhanced-list li:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .enhanced-list li::before {
+            content: '✓';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 1rem;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+
+        /* Summary Table */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .summary-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+            background: white;
+        }
+
+        .summary-table tr:hover td {
+            background: var(--neutral-50);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .bar-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> Dashboard Audit Keuangan</h1>
+                <p class="subtitle">Analisis Komprehensif Laporan Keuangan 2024</p>
+                
+                <div class="stats-overview">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Komponen Audit</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Temuan Kritis</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Tingkat Kepatuhan</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Rp 1.8M</span>
+                        <span class="stat-label">Total Aset</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- Cash and Cash Equivalents Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon cash">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h2 class="card-title">Kas dan Setara Kas</h2>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Integritas Data
+                    </h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="badge success">
+                            <i class="fas fa-check"></i>
+                            Data Valid (0 error)
+                        </span>
+                        <span class="badge success">
+                            <i class="fas fa-check"></i>
+                            No Duplikasi
+                        </span>
+                        <span class="badge warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            1 Gap Detected
+                        </span>
+                    </div>
+                    
+                    <div class="finding minor">
+                        <div class="finding-icon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <p><strong>Gap Voucher Number:</strong> Antara nomor 1 s/d 21.000</p>
+                        <p class="explanation">Perusahaan baru beroperasi pada 2021, nomor transaksi dimulai dari 21001. Temuan ini dianggap tidak signifikan.</p>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-user-check"></i>
+                        Test of Control: Otorisasi
+                    </h3>
+                    <div class="chart-container">
+                        <div class="chart-title">Distribusi Transaksi per Level Otorisasi</div>
+                        <div class="bar-chart stacked-chart">
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Level 1 (20-50jt)</div>
+                                    <div class="bar-value">Mayoritas Transaksi</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar primary" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Level 2 (50-100jt)</div>
+                                    <div class="bar-value">2 Transaksi</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar warning" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Level 3 (>100jt)</div>
+                                    <div class="bar-value">1 Transaksi</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar danger" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="enhanced-list">
+                        <li><strong>Level 1 (Kepala Bagian):</strong> Rp 20jt - Rp 50jt. Hasil filter menunjukkan transaksi sesuai. (Contoh: Voucher 21065, 21066)</li>
+                        <li><strong>Level 2 (Manajer Keuangan):</strong> Rp 50jt - Rp 100jt. Hasil filter menunjukkan 2 transaksi (21038: Rp 50.535.720, 21052: Rp 50.290.637).</li>
+                        <li><strong>Level 3 (Direktur Utama):</strong> > Rp 100jt. Hasil filter menunjukkan 1 transaksi (21099: Rp 100.200.000).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Receivables Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon receivables">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h2 class="card-title">Piutang Usaha</h2>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Integritas Data
+                    </h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="badge success">
+                            <i class="fas fa-check"></i>
+                            Data Valid (0 error)
+                        </span>
+                        <span class="badge info">
+                            <i class="fas fa-info"></i>
+                            263 Duplikasi Normal
+                        </span>
+                        <span class="badge info">
+                            <i class="fas fa-info"></i>
+                            35 Gap Normal
+                        </span>
+                    </div>
+                    
+                    <div class="finding critical">
+                        <div class="finding-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <p><strong>Temuan Kritis:</strong></p>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>2 Transaksi melebihi limit kredit (Cust: 376005, 811002)</li>
+                            <li>4 Piutang bersaldo negatif (Total: Rp -3.238.500)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-pie"></i>
+                        Analisis Umur Piutang
+                    </h3>
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span class="data-point">Rp 200.127.050</span>
+                        <p style="margin: 0; color: var(--neutral-700);">Total Outstanding</p>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-title">Distribusi Umur Piutang</div>
+                        <div class="bar-chart stacked-chart">
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">0-30 hari</div>
+                                    <div class="bar-value">56.18% (Rp 112.4Jt)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar success" style="width: 56.18%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Jatuh Tempo</div>
+                                    <div class="bar-value">40.25% (Rp 80.5Jt)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar danger" style="width: 40.25%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">31-60 hari</div>
+                                    <div class="bar-value">2.31% (Rp 4.6Jt)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar warning" style="width: 2.31%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">151-180 hari</div>
+                                    <div class="bar-value">0.48% (Rp 0.9Jt)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar warning" style="width: 0.48%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">>180 hari</div>
+                                    <div class="bar-value">0.78% (Rp 1.5Jt)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar danger" style="width: 0.78%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="enhanced-list">
+                        <li>Akan jatuh tempo (0-30 hari): 167 transaksi (Rp 112.432.600)</li>
+                        <li>Sudah jatuh tempo (belum dibayar): 123 transaksi (Rp 80.556.950, kategori -31 s/d -1 hari)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Inventory Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon inventory">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h2 class="card-title">Persediaan</h2>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-clipboard-check"></i>
+                        Status Verifikasi
+                    </h3>
+                    
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="badge error">
+                            <i class="fas fa-times"></i>
+                            1 Error Detected
+                        </span>
+                        <span class="badge success">
+                            <i class="fas fa-check"></i>
+                            No Duplikasi
+                        </span>
+                        <span class="badge info">
+                            <i class="fas fa-info"></i>
+                            34 Gap Normal
+                        </span>
+                    </div>
+
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span class="data-point">Rp 320.557.500</span>
+                        <p style="margin: 0; color: var(--neutral-700);">Total Inventory Cost</p>
+                    </div>
+
+                    <div class="finding critical">
+                        <div class="finding-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <p><strong>Temuan Audit:</strong></p>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Transaksi #13: Cost_Date kosong</li>
+                            <li>2 Item persediaan minus (Rp -200.000)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Analisis Statistik
+                    </h3>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Status Item Persediaan (152 Total Items)</div>
+                        <div class="bar-chart stacked-chart">
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Item Positif</div>
+                                    <div class="bar-value">149 Item (98%)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar success" style="width: 98%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Item Nol</div>
+                                    <div class="bar-value">1 Item (0.6%)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar warning" style="width: 0.6%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Item Negatif</div>
+                                    <div class="bar-value">2 Item (1.3%)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar danger" style="width: 1.3%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fixed Assets Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon assets">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h2 class="card-title">Aset Tetap</h2>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-calculator"></i>
+                        Verifikasi Saldo
+                    </h3>
+                    
+                    <div class="summary-table">
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Komponen</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Harga Perolehan</td>
+                                    <td><span class="data-point">Rp 972.107.000</span></td>
+                                    <td><span class="badge success"><i class="fas fa-check"></i> Sesuai</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Akum. Peny. 2020</td>
+                                    <td><span class="data-point">Rp 120.624.500</span></td>
+                                    <td><span class="badge success"><i class="fas fa-check"></i> Sesuai</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Akum. Peny. 2021</td>
+                                    <td><span class="data-point">Rp 170.377.700</span></td>
+                                    <td><span class="badge success"><i class="fas fa-check"></i> Sesuai</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Kesalahan Penyusutan
+                    </h3>
+                    
+                    <div class="finding critical">
+                        <div class="finding-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <p><strong>5 Kesalahan Perhitungan Ditemukan</strong></p>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-title">Selisih Penyusutan per Aset</div>
+                        <div class="bar-chart stacked-chart">
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Gedung</div>
+                                    <div class="bar-value">+Rp 0.37Jt (Lebih Saji)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar positive" style="width: 15%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Laptop</div>
+                                    <div class="bar-value">+Rp 2.66Jt (Lebih Saji)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar positive" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Mesin Gula</div>
+                                    <div class="bar-value">-Rp 4.00Jt (Kurang Saji)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar negative" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Mixer Gula</div>
+                                    <div class="bar-value">-Rp 3.79Jt (Kurang Saji)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar negative" style="width: 47%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Mobil Pickup</div>
+                                    <div class="bar-value">-Rp 7.70Jt (Kurang Saji)</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar negative" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="explanation">Positif = Lebih Saji | Negatif = Kurang Saji oleh Manajemen</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payables Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon payables">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h2 class="card-title">Utang Usaha</h2>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Ringkasan Utang
+                    </h3>
+                    
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span class="data-point">Rp 155.267.110</span>
+                        <p style="margin: 0; color: var(--neutral-700);">Total Outstanding Payables</p>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="badge success">
+                            <i class="fas fa-check"></i>
+                            Data Valid
+                        </span>
+                        <span class="badge error">
+                            <i class="fas fa-times"></i>
+                            2 Duplikasi
+                        </span>
+                    </div>
+
+                    <div class="finding critical">
+                        <div class="finding-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <p><strong>Temuan Kritis:</strong></p>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Duplikasi Invoice: 519383 dan 8753401</li>
+                            <li>100% utang telah melewati jatuh tempo (>181 hari)</li>
+                            <li>Utang tertua: 5 Nov 2021 (JT: 5 Jan 2022)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-users"></i>
+                        Top 3 Kreditur
+                    </h3>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Distribusi Utang Terbesar</div>
+                        <div class="bar-chart stacked-chart">
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">CV Maya Pada</div>
+                                    <div class="bar-value">Rp 22.28Jt</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar primary" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">CV Segar Bugar</div>
+                                    <div class="bar-value">Rp 17.17Jt</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar primary" style="width: 77%;"></div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-header">
+                                    <div class="bar-label">Bpk. Rajiman S</div>
+                                    <div class="bar-value">Rp 16.81Jt</div>
+                                </div>
+                                <div class="bar-wrapper">
+                                    <div class="bar primary" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="explanation">10 kreditur terbesar mewakili 82.88% dari total utang (Rp 128.68Jt)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive elements and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate bars on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.bar');
+                        bars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                bar.style.opacity = '1';
+                                bar.style.transform = 'scaleX(1)';
+                            }, index * 150);
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize bar animations
+            document.querySelectorAll('.bar').forEach(bar => {
+                bar.style.opacity = '0';
+                bar.style.transform = 'scaleX(0)';
+                bar.style.transformOrigin = 'left';
+                bar.style.transition = 'all 0.8s ease-out';
+            });
+
+            // Observe all chart containers
+            document.querySelectorAll('.chart-container').forEach(chart => {
+                observer.observe(chart);
+            });
+
+            // Add hover effects to cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-8px) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
