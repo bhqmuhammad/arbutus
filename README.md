@@ -162,22 +162,17 @@ When contributing to this audit framework:
 3. Update the infographic with new findings
 4. Maintain consistency with existing naming conventions
 
-## 📞 Support
-
-For questions regarding:
-- Arbutus Analyzer usage
-- Audit procedure interpretation  
-- Data format requirements
-- Finding explanations
-
-Please refer to the presentation slides or contact the audit team.
-
 ## ⚖️ License
 
-This audit framework is proprietary and intended for authorized audit use only.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+**Author**: bhqmuhammad  
+**Project**: Arbutus Financial Audit Framework  
+**Last Updated**: June 2025
 
 ---
 
-**Last Updated**: 2024
-**Audit Period**: 2021 Financial Year
+**Audit Period**: 2021 Financial Year  
 **Tool Version**: Arbutus Analyzer
