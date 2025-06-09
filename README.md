@@ -9,6 +9,7 @@ This repository contains a complete financial audit framework including:
 - Automated audit testing scripts (SmartApps)
 - Financial analysis and risk assessment tools
 - Comprehensive audit documentation and findings
+- Sample data files and training materials
 
 ## 📁 Repository Structure
 
@@ -26,6 +27,26 @@ Arbutus/
 ├── Payroll_Excel.FIL          # Payroll data file
 ├── Piutang_Per_Customer.fmt    # Customer receivables format
 └── Ghost_employee.fmt          # Ghost employee detection format
+```
+
+### Excel Data Files
+```
+Data Files/
+├── AR.xlsx                     # Accounts Receivable data
+├── Account Payable.xlsx        # Accounts Payable data
+├── Cash Disbursement.xlsx      # Cash disbursement transactions
+├── Cash GL.xlsx               # Cash General Ledger
+└── Arbutus data Fixed Asset.xlsx     # Fixed asset master data
+```
+
+### ATLAS Training Materials
+```
+Training/
+├── ATLAS.xlsx                 # ATLAS audit software examples
+├── Aplikasi ATLAS 2018 Version 2.0.1_9-10-2020.xlsx  # ATLAS application v2.0.1
+├── Contoh pelatihan Atlas_normalisasi data akuntansi.xlsx  # ATLAS training examples
+├── Atlas.rar                  # ATLAS compressed archive files
+└── Realsa Data.zip           # Real sample data archive
 ```
 
 ### SmartApps Automated Procedures
@@ -54,7 +75,7 @@ Prakdit/SmartApps/
 
 ### Documentation
 - `Analytics Result.pdf` - Comprehensive audit analytics results
-- `infografis prakdit.html` - Interactive audit findings infographic
+- `Audit Results in Infographics.html` - Interactive audit findings infographic
 
 ## 🔍 Audit Procedures
 
@@ -86,6 +107,12 @@ Prakdit/SmartApps/
 - **Aging Analysis**: Overdue payables identification
 - **Vendor Analysis**: Concentration and credit balance analysis
 
+### 6. Payroll and Employee Data
+- **Employee Master Verification**: Employee records validation
+- **Payroll Calculations**: Gross pay, tax deductions, and net pay verification
+- **Ghost Employee Detection**: Identification of phantom employees
+- **Department and Salary Analysis**: Statistical analysis by department and position
+
 ## 📊 Key Findings Summary
 
 ### ✅ Clean Areas
@@ -95,7 +122,6 @@ Prakdit/SmartApps/
 
 ### ⚠️ Areas Requiring Attention
 - **Accounts Payable**: 2 duplicate invoice numbers detected
-- **Inventory**: 2 items with negative balances (-Rp 200,000)
 - **Fixed Assets**: 5 depreciation calculation errors identified
 - **Receivables**: 2 transactions exceeding credit limits
 
@@ -108,15 +134,39 @@ Prakdit/SmartApps/
 
 ### Prerequisites
 - Arbutus Analyzer software
+- ATLAS audit software (optional)
+- Microsoft Excel (for viewing data files)
+- File extraction software (for .rar and .zip files)
 - Access to company financial data files
 - Appropriate audit permissions
 
+### File Formats Supported
+- **`.fmt`** - Arbutus format definition files
+- **`.fil`** - Arbutus data files
+- **`.avw`** - Arbutus analysis view files
+- **`.pro`** - Arbutus SmartApp procedure files
+- **`.xlsx/.xls`** - Excel data files
+- **`.csv`** - Comma-separated values
+- **`.pdf`** - Documentation and results
+- **`.html`** - Interactive reports and infographics
+- **`.rar/.zip`** - Compressed archive files
+
 ### Usage Instructions
 
-1. **Data Import**: Load the `.fmt` format files into Arbutus Analyzer
-2. **Run SmartApps**: Execute the automated procedures in the Prakdit folder
-3. **Review Results**: Analyze outputs using the provided format definitions
-4. **Documentation**: Reference the presentation and infographic for detailed findings
+1. **Extract Archives**: 
+   - Extract `Atlas.rar` for additional ATLAS tools and examples
+   - Extract `Realsa Data.zip` for real sample data files
+
+2. **Data Import**: 
+   - Load the `.fmt` format files into Arbutus Analyzer
+   - Import Excel files for comparative analysis
+   - Use extracted data for additional validation
+
+3. **Run SmartApps**: Execute the automated procedures in the Prakdit folder
+
+4. **Review Results**: Analyze outputs using the provided format definitions
+
+5. **Documentation**: Reference the presentation and infographic for detailed findings
 
 ### Running Specific Tests
 
@@ -131,20 +181,60 @@ Open: AR04_Aged_Receivables_Analysis.pro
 Open: SmartApps_FA_Header_.pro
 ```
 
+### Working with Archive Files
+
+```bash
+# Extract training materials:
+Extract: Atlas.rar
+# Contains additional ATLAS software tools and examples
+
+# Extract sample data:
+Extract: Realsa Data.zip
+# Contains real-world sample data for testing procedures
+```
+
 ## 📈 Audit Results Dashboard
 
-View the interactive audit results in `infografis prakdit.html` which provides:
+View the interactive audit results in `Audit Results in Infographics.html` which provides:
 - Real-time data integrity status
 - Visual risk assessment charts
 - Detailed finding explanations
 - Compliance status indicators
 
-## 🔧 File Formats
+## 🎓 Training Resources
 
-- **`.fmt`** - Arbutus format definition files
-- **`.fil`** - Arbutus data files
-- **`.avw`** - Arbutus analysis view files
-- **`.pro`** - Arbutus SmartApp procedure files
+### ATLAS Software Training
+- **ATLAS.xlsx**: Basic ATLAS functionalities
+- **Aplikasi ATLAS 2018 Version 2.0.1**: Complete ATLAS application guide
+- **Contoh pelatihan Atlas_normalisasi data akuntansi.xlsx**: Data normalization examples
+- **Atlas.rar**: Additional ATLAS tools and resources (compressed)
+- **Realsa Data.zip**: Real sample data for practical training
+
+### Sample Data for Learning
+- All Excel files can be used for training purposes
+- Real sample data available in compressed archives
+- Multiple format examples for different audit scenarios
+
+## 📝 Data Quality Assurance
+
+### Comprehensive Data Coverage
+- **Financial Statements**: Complete GL, AP, AR data
+- **Operational Data**: Fixed assets
+- **Supporting Documentation**: Customer limits, employee records
+- **Training Materials**: Real-world sample data and tools
+
+## 🔧 Technical Specifications
+
+### Data Processing Capabilities
+- Multi-format data import (Arbutus, Excel, compressed archives)
+- Automated data validation and integrity checks
+- Real-time error detection and reporting
+- Cross-reference validation between multiple sources
+
+### Archive Management
+- Compressed file support for efficient storage
+- Organized training materials and sample data
+- Easy extraction and deployment of audit tools
 
 ## 📝 Compliance & Standards
 
@@ -153,6 +243,7 @@ This audit framework follows:
 - Internal audit best practices
 - Risk-based audit methodology
 - Data analytics audit techniques
+- International auditing standards
 
 ## 🤝 Contributing
 
@@ -161,6 +252,8 @@ When contributing to this audit framework:
 2. Document any new SmartApps thoroughly
 3. Update the infographic with new findings
 4. Maintain consistency with existing naming conventions
+5. Test with both Arbutus and Excel data formats
+6. Properly compress large files for efficient storage
 
 ## ⚖️ License
 
@@ -168,11 +261,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Author**: bhqmuhammad  
+**Author**: Muhammad Baihaqi (@bhqmuhammad)  
 **Project**: Arbutus Financial Audit Framework  
-**Last Updated**: June 2025
+**Last Updated**: June 9, 2025 at 11:07 UTC
 
 ---
 
 **Audit Period**: 2021 Financial Year  
-**Tool Version**: Arbutus Analyzer
+**Tool Version**: Arbutus Analyzer & ATLAS 2018 v2.0.1  
+**Data Files**: Excel files, compressed archives, and Arbutus formats  
+**Repository Status**: Active (Latest commit: June 9, 2025 at 11:07 UTC)
+
+## 🔗 Quick Links
+
+- [View Interactive Results](Audit%20Results%20in%20Infographics.html)
+- [Download Analytics Report](Analytics%20Result.pdf)
+- [Browse All Commits](https://github.com/bhqmuhammad/arbutus/commits) for complete file history
+
+*Note: Results may be incomplete due to API limitations. View the [complete commit history](https://github.com/bhqmuhammad/arbutus/commits?sort=updated&order=desc) for all changes.*
