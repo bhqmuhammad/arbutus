@@ -3,7 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infografis Audit Keuangan - Dashboard Analitik</title>
+    <meta name="description" content="Dashboard analitik audit keuangan komprehensif menggunakan Arbutus Analyzer untuk analisis laporan keuangan 2021">
+    <meta name="keywords" content="audit keuangan, dashboard analitik, arbutus analyzer, laporan keuangan, analisis data">
+    <meta name="author" content="Muhammad Baihaqi">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/bhqmuhammad/arbutus">
+    <meta property="og:title" content="Dashboard Audit Keuangan - Arbutus Financial Audit Tools">
+    <meta property="og:description" content="Dashboard analitik audit keuangan komprehensif dengan visualisasi data interaktif">
+    <meta property="og:image" content="https://github.com/bhqmuhammad/arbutus/raw/main/Analytics%20Result.pdf">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/bhqmuhammad/arbutus">
+    <meta property="twitter:title" content="Dashboard Audit Keuangan - Arbutus Financial Audit Tools">
+    <meta property="twitter:description" content="Dashboard analitik audit keuangan komprehensif dengan visualisasi data interaktif">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E">
+    
+    <title>Dashboard Audit Keuangan - Arbutus Financial Audit Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -505,6 +526,77 @@
             }
         }
 
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-dark: #000000;
+                --neutral-50: #ffffff;
+                --neutral-700: #000000;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+            
+            header {
+                background: white !important;
+                color: black !important;
+            }
         /* Animation */
         @keyframes slideInUp {
             from {
@@ -529,75 +621,79 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div class="main-container">
-        <header>
+        <header role="banner">
             <div class="header-content">
-                <h1><i class="fas fa-chart-line"></i> Dashboard Audit Keuangan</h1>
-                <p class="subtitle">Analisis Komprehensif Laporan Keuangan 2024</p>
+                <h1><i class="fas fa-chart-line" aria-hidden="true"></i> Dashboard Audit Keuangan</h1>
+                <p class="subtitle">Analisis Komprehensif Laporan Keuangan 2021 - Arbutus Financial Audit Tools</p>
                 
-                <div class="stats-overview">
+                <section class="stats-overview" aria-labelledby="stats-heading">
+                    <h2 id="stats-heading" class="sr-only">Ringkasan Statistik Audit</h2>
                     <div class="stat-item">
-                        <span class="stat-number">5</span>
+                        <span class="stat-number" aria-label="5 komponen audit">5</span>
                         <span class="stat-label">Komponen Audit</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">12</span>
+                        <span class="stat-number" aria-label="12 temuan kritis">12</span>
                         <span class="stat-label">Temuan Kritis</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">85%</span>
+                        <span class="stat-number" aria-label="85 persen tingkat kepatuhan">85%</span>
                         <span class="stat-label">Tingkat Kepatuhan</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">Rp 1.8M</span>
+                        <span class="stat-number" aria-label="1.8 miliar rupiah total aset">Rp 1.8M</span>
                         <span class="stat-label">Total Aset</span>
                     </div>
-                </div>
+                </section>
             </div>
         </header>
 
-        <div class="container">
+        <main id="main-content" class="container" role="main">
+            <h2 class="sr-only">Detail Hasil Audit per Komponen</h2>
             <!-- Cash and Cash Equivalents Card -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon cash">
+            <article class="card" role="article" aria-labelledby="cash-heading">
+                <header class="card-header">
+                    <div class="card-icon cash" aria-hidden="true">
                         <i class="fas fa-coins"></i>
                     </div>
-                    <h2 class="card-title">Kas dan Setara Kas</h2>
-                </div>
+                    <h3 id="cash-heading" class="card-title">Kas dan Setara Kas</h3>
+                </header>
 
-                <div class="card-section">
-                    <h3 class="section-title">
-                        <i class="fas fa-shield-alt"></i>
+                <section class="card-section" aria-labelledby="cash-integrity-heading">
+                    <h4 id="cash-integrity-heading" class="section-title">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         Integritas Data
-                    </h3>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="badge success">
-                            <i class="fas fa-check"></i>
+                    </h4>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;" role="list">
+                        <span class="badge success" role="listitem">
+                            <i class="fas fa-check" aria-hidden="true"></i>
                             Data Valid (0 error)
                         </span>
-                        <span class="badge success">
-                            <i class="fas fa-check"></i>
+                        <span class="badge success" role="listitem">
+                            <i class="fas fa-check" aria-hidden="true"></i>
                             No Duplikasi
                         </span>
-                        <span class="badge warning">
-                            <i class="fas fa-exclamation-triangle"></i>
+                        <span class="badge warning" role="listitem">
+                            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                             1 Gap Detected
                         </span>
                     </div>
                     
-                    <div class="finding minor">
-                        <div class="finding-icon">
+                    <div class="finding minor" role="alert" aria-labelledby="gap-voucher-finding">
+                        <div class="finding-icon" aria-hidden="true">
                             <i class="fas fa-info"></i>
                         </div>
-                        <p><strong>Gap Voucher Number:</strong> Antara nomor 1 s/d 21.000</p>
+                        <h5 id="gap-voucher-finding"><strong>Gap Voucher Number:</strong> Antara nomor 1 s/d 21.000</h5>
                         <p class="explanation">Perusahaan baru beroperasi pada 2021, nomor transaksi dimulai dari 21001. Temuan ini dianggap tidak signifikan.</p>
                     </div>
-                </div>
+                </section>
 
-                <div class="card-section">
-                    <h3 class="section-title">
-                        <i class="fas fa-user-check"></i>
+                <section class="card-section" aria-labelledby="cash-authorization-heading">
+                    <h4 id="cash-authorization-heading" class="section-title">
+                        <i class="fas fa-user-check" aria-hidden="true"></i>
                         Test of Control: Otorisasi
                     </h3>
                     <div class="chart-container">
@@ -1033,57 +1129,165 @@
                         </div>
                         <p class="explanation">10 kreditur terbesar mewakili 82.88% dari total utang (Rp 128.68Jt)</p>
                     </div>
+                </section>
+            </article>
+        </main>
+
+        <footer role="contentinfo" style="background: var(--neutral-800); color: white; padding: 2rem; text-align: center; margin-top: 3rem;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h3 style="margin-bottom: 1rem; color: white;">Arbutus Financial Audit Tools</h3>
+                <p style="margin-bottom: 1rem; opacity: 0.8;">
+                    Dashboard audit keuangan komprehensif menggunakan Arbutus Analyzer dan ATLAS 2018 v2.0.1
+                </p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <div>
+                        <strong>Periode Audit:</strong> 2021
+                    </div>
+                    <div>
+                        <strong>Terakhir Diperbarui:</strong> 9 Juni 2025
+                    </div>
+                    <div>
+                        <strong>Versi:</strong> 2025.1
+                    </div>
                 </div>
+                <p style="font-size: 0.9rem; opacity: 0.7;">
+                    © 2025 Muhammad Baihaqi (@bhqmuhammad) | 
+                    <a href="https://github.com/bhqmuhammad/arbutus" style="color: var(--accent-green);">GitHub Repository</a> | 
+                    MIT License
+                </p>
             </div>
-        </div>
+        </footer>
     </div>
 
     <script>
-        // Add interactive elements and animations
+        // Add interactive elements and animations with accessibility support
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate bars on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // Animate bars on scroll only if motion is not reduced
+            if (!prefersReducedMotion) {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const bars = entry.target.querySelectorAll('.bar');
-                        bars.forEach((bar, index) => {
-                            setTimeout(() => {
-                                bar.style.opacity = '1';
-                                bar.style.transform = 'scaleX(1)';
-                            }, index * 150);
-                        });
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const bars = entry.target.querySelectorAll('.bar');
+                            bars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    bar.style.opacity = '1';
+                                    bar.style.transform = 'scaleX(1)';
+                                    // Announce to screen readers when animation completes
+                                    if (index === bars.length - 1) {
+                                        const announcement = document.createElement('div');
+                                        announcement.setAttribute('aria-live', 'polite');
+                                        announcement.className = 'sr-only';
+                                        announcement.textContent = 'Chart animation completed';
+                                        document.body.appendChild(announcement);
+                                        setTimeout(() => document.body.removeChild(announcement), 1000);
+                                    }
+                                }, index * 150);
+                            });
+                        }
+                    });
+                }, observerOptions);
+
+                // Initialize bar animations
+                document.querySelectorAll('.bar').forEach(bar => {
+                    bar.style.opacity = '0';
+                    bar.style.transform = 'scaleX(0)';
+                    bar.style.transformOrigin = 'left';
+                    bar.style.transition = 'all 0.8s ease-out';
+                });
+
+                // Observe all chart containers
+                document.querySelectorAll('.chart-container').forEach(chart => {
+                    observer.observe(chart);
+                });
+
+                // Add hover effects to cards
+                document.querySelectorAll('.card').forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-8px) scale(1.02)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(-8px) scale(1)';
+                    });
+                });
+            }
+
+            // Keyboard navigation support
+            document.querySelectorAll('.card').forEach(card => {
+                card.setAttribute('tabindex', '0');
+                
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        // Toggle expanded view or focus on first interactive element
+                        const firstButton = this.querySelector('button, a, [tabindex="0"]');
+                        if (firstButton) {
+                            firstButton.focus();
+                        }
                     }
                 });
-            }, observerOptions);
-
-            // Initialize bar animations
-            document.querySelectorAll('.bar').forEach(bar => {
-                bar.style.opacity = '0';
-                bar.style.transform = 'scaleX(0)';
-                bar.style.transformOrigin = 'left';
-                bar.style.transition = 'all 0.8s ease-out';
             });
 
-            // Observe all chart containers
-            document.querySelectorAll('.chart-container').forEach(chart => {
-                observer.observe(chart);
-            });
-
-            // Add hover effects to cards
-            document.querySelectorAll('.card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px) scale(1.02)';
-                });
+            // Add ARIA labels to charts for screen readers
+            document.querySelectorAll('.chart-container').forEach((chart, index) => {
+                chart.setAttribute('role', 'img');
+                chart.setAttribute('aria-labelledby', `chart-title-${index}`);
                 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(-8px) scale(1)';
-                });
+                const title = chart.querySelector('.chart-title');
+                if (title) {
+                    title.id = `chart-title-${index}`;
+                }
             });
+
+            // Improve badge accessibility
+            document.querySelectorAll('.badge').forEach(badge => {
+                badge.setAttribute('role', 'status');
+                if (badge.classList.contains('error') || badge.classList.contains('warning')) {
+                    badge.setAttribute('aria-live', 'assertive');
+                } else {
+                    badge.setAttribute('aria-live', 'polite');
+                }
+            });
+
+            // Add print functionality
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print" aria-hidden="true"></i> Print Report';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary-blue);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: var(--shadow-lg);
+                font-family: inherit;
+                font-weight: 500;
+                z-index: 1000;
+                transition: all 0.3s ease;
+            `;
+            
+            printButton.addEventListener('click', () => window.print());
+            printButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.boxShadow = 'var(--shadow-xl)';
+            });
+            printButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'var(--shadow-lg)';
+            });
+            
+            document.body.appendChild(printButton);
         });
     </script>
 </body>
