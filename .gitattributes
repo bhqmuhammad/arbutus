@@ -1,0 +1,86 @@
+# Handle line endings automatically for files detected as text
+* text=auto
+
+# Explicitly declare text files to have LF line endings
+*.md text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Declare files that will always have CRLF line endings on checkout
+*.bat text eol=crlf
+
+# Binary files
+*.pdf binary
+*.zip binary
+*.rar binary
+*.7z binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.xz binary
+
+# Arbutus specific file formats
+*.fil binary
+*.fmt binary
+*.avw binary
+*.pro binary
+
+# Excel files
+*.xlsx binary
+*.xls binary
+*.xlsm binary
+
+# Image files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Video files
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.wmv binary
+
+# Audio files
+*.mp3 binary
+*.wav binary
+*.flac binary
+
+# Font files
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
+
+# Archive files should not be diff'd
+*.zip -diff
+*.rar -diff
+*.7z -diff
+*.tar -diff
+*.gz -diff
+
+# Large data files should not be diff'd
+*.fil -diff
+*.FIL -diff
+
+# Excel files should not be diff'd
+*.xlsx -diff
+*.xls -diff
+*.xlsm -diff
+
+# PDF files should not be diff'd
+*.pdf -diff
+
+# Set merge strategy for documentation files
+*.md merge=union
+README* merge=union
+CHANGELOG* merge=union

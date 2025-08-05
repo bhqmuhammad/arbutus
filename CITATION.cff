@@ -1,0 +1,150 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Arbutus Financial Audit Tools"
+abstract: "A comprehensive collection of financial audit procedures and analysis tools using Arbutus Analyzer software for conducting detailed financial audits. This framework includes automated SmartApps, data integrity verification procedures, and comprehensive training materials for financial auditors and compliance professionals."
+
+authors:
+  - family-names: "Baihaqi"
+    given-names: "Muhammad"
+    orcid: "https://orcid.org/0000-0000-0000-0000"  # Replace with actual ORCID if available
+    affiliation: "Independent Financial Audit Developer"
+
+repository-code: "https://github.com/bhqmuhammad/arbutus"
+url: "https://github.com/bhqmuhammad/arbutus"
+license: MIT
+version: "2025.1"
+date-released: "2025-06-09"
+
+keywords:
+  - "financial audit"
+  - "arbutus analyzer"
+  - "audit procedures"
+  - "data analysis"
+  - "fraud detection"
+  - "accounts payable"
+  - "accounts receivable"
+  - "fixed assets"
+  - "payroll audit"
+  - "smartapps"
+  - "atlas audit software"
+  - "compliance"
+  - "internal audit"
+  - "financial analysis"
+  - "audit automation"
+
+references:
+  - type: software
+    title: "Arbutus Analyzer"
+    publisher: "Arbutus Software"
+    url: "https://www.arbutussoftware.com/"
+  
+  - type: software  
+    title: "ATLAS Audit Software"
+    version: "2018 v2.0.1"
+    notes: "Used for advanced audit procedures and training materials"
+
+preferred-citation:
+  type: software
+  title: "Arbutus Financial Audit Tools: A Comprehensive Framework for Financial Auditing"
+  authors:
+    - family-names: "Baihaqi"
+      given-names: "Muhammad"
+  year: 2025
+  publisher: "GitHub"
+  url: "https://github.com/bhqmuhammad/arbutus"
+  version: "2025.1"
+  repository-code: "https://github.com/bhqmuhammad/arbutus"
+  abstract: "This repository provides a complete financial audit framework including data integrity verification procedures, automated audit testing scripts (SmartApps), financial analysis tools, comprehensive documentation, and training materials for conducting detailed financial audits using Arbutus Analyzer and ATLAS software."
+
+contact:
+  - name: "Muhammad Baihaqi"
+    email: "contact@example.com"  # Replace with actual contact email
+    website: "https://github.com/bhqmuhammad"
+
+funding:
+  - type: "personal"
+    description: "Independent development project"
+
+identifiers:
+  - type: url
+    value: "https://github.com/bhqmuhammad/arbutus"
+    description: "Main repository URL"
+
+categories:
+  - "audit"
+  - "finance"
+  - "data-analysis"
+  - "compliance"
+  - "automation"
+
+programming-languages:
+  - "Arbutus Script"
+  - "Excel VBA"
+  - "HTML"
+  - "CSS"
+
+operating-systems:
+  - "Windows"
+  - "macOS" 
+  - "Linux"
+
+requirements:
+  - "Arbutus Analyzer software"
+  - "Microsoft Excel"
+  - "Archive extraction tools"
+
+# Academic use cases
+use-cases:
+  - "Financial audit education and training"
+  - "Audit methodology research"
+  - "Compliance testing automation"
+  - "Fraud detection procedure development"
+  - "Internal audit process improvement"
+  - "Financial data analysis research"
+
+# Professional applications
+applications:
+  - "Internal audit departments"
+  - "External audit firms"
+  - "Compliance and risk management"
+  - "Financial fraud investigation"
+  - "Academic audit research"
+  - "Audit software training"
+
+# Data scope
+data-coverage:
+  audit-areas:
+    - "Cash and cash equivalents"
+    - "Accounts receivable"
+    - "Accounts payable"
+    - "Fixed assets"
+    - "Inventory"
+    - "Payroll"
+  
+  procedures:
+    - "Data integrity testing"
+    - "Duplicate detection"
+    - "Authorization validation"
+    - "Aging analysis"
+    - "Credit limit verification"
+    - "Ghost employee detection"
+    - "Depreciation accuracy"
+    - "Fraud detection"
+
+# Technical specifications
+technical-details:
+  file-formats:
+    - ".fmt (Arbutus format definitions)"
+    - ".fil (Arbutus data files)"
+    - ".avw (Arbutus analysis views)"
+    - ".pro (Arbutus SmartApp procedures)"
+    - ".xlsx/.xls (Excel data files)"
+    - ".pdf (Documentation)"
+    - ".html (Interactive reports)"
+  
+  software-compatibility:
+    - "Arbutus Analyzer (all versions)"
+    - "ATLAS 2018 v2.0.1"
+    - "Microsoft Excel 2016+"
+    - "Modern web browsers"
